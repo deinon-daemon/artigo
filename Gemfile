@@ -1,20 +1,23 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
+#
 
-gem 'rails', '~> 5.0.3'
+ruby "3.3.1"
+
+gem 'rails', '7.2.0'
 gem 'sqlite3'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'turbolinks'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -22,27 +25,27 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen' , '~> 3.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'devise', '~> 4.2'
+gem 'bootstrap-sass'
+gem 'devise'
 
-gem 'toastr-rails', '~> 1.0'
+gem 'toastr-rails'
 
 gem 'figaro'
 
-gem 'omniauth', '~> 1.6'
-gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
-gem 'paperclip', '~> 5.1.0'
-gem 'aws-sdk', '~> 2.8'
+gem 'paperclip'
+gem 'aws-sdk'
 
-gem 'geocoder', '~> 1.4'
-gem 'jquery-ui-rails', '~> 5.0'
+gem 'geocoder'
+gem 'jquery-ui-rails'
 
-gem 'ransack', '~> 1.7'
+gem 'ransack'
