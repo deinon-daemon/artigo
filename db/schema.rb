@@ -11,7 +11,28 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
-  create_table "photos", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "guests", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "guest_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
+  create_table "hosts", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "host_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["user_id"], name: "index_hosts_on_user_id"
+  end
+
+  create_table "photos", id: :serial, force: :cascade do |t|
     t.integer "room_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -22,7 +43,7 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.index ["room_id"], name: "index_photos_on_room_id"
   end
 
-  create_table "reservations", force: :cascade do |t|
+  create_table "reservations", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
     t.datetime "start_date", precision: nil
@@ -35,7 +56,7 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "reviews", id: :serial, force: :cascade do |t|
     t.text "comment"
     t.integer "star", default: 1
     t.integer "room_id"
@@ -51,7 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.index ["room_id"], name: "index_reviews_on_room_id"
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", id: :serial, force: :cascade do |t|
     t.string "home_type"
     t.string "room_type"
     t.integer "accommodate"
@@ -75,7 +96,7 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -102,6 +123,8 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "guests", "users"
+  add_foreign_key "hosts", "users"
   add_foreign_key "photos", "rooms"
   add_foreign_key "reservations", "rooms"
   add_foreign_key "reservations", "users"

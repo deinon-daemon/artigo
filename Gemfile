@@ -8,8 +8,8 @@ source 'https://rubygems.org'
 
 ruby "3.3.1"
 
-gem 'rails', '7.2.0'
-gem 'sqlite3'
+gem 'rails', '7.2.2'
+gem 'pg', '~> 1.1'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
@@ -18,6 +18,9 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
