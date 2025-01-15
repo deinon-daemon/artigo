@@ -25,3 +25,7 @@
 
 # Ignore images
 /public/system/photos/*
+
+# Ignore all environment files (except templates).
+/.env*
+!/.env*.erb
