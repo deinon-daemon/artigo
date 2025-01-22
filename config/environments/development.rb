@@ -51,30 +51,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000, protocol: 'http' }
+  config.action_mailer.delivery_method = :smtp
+  # mailer config sendgrid + heroku
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.sendgrid.net',
+    :port => '587',
+    :authentication => :plain,
+    :user_name => ENV['SENDGRID_USER_NAME'],
+    :password => ENV['SENDGRID_API_KEY'],
+    :domain => ENV['APP_DOMAIN'],
+    :enable_starttls_auto => true
+  }
 
   config.action_mailer.delivery_method = :smtp
-
-  # MailGun
-  # config.action_mailer.smtp_settings = {
-  #      :address => "smtp.mailgun.org",
-  #      :port => 587,
-  #      :domain => ENV["mailgun_domain"],
-  #      :authentication => :plain,
-  #      :user_name => ENV["mailgun_username"],
-  #      :password => ENV["mailgun_password"]
-  # }
-
-  # GMAIL
-  config.action_mailer.smtp_settings = {
-       :address => "smtp.gmail.com",
-       :port => 587,
-       :user_name => ENV["gmail_username"],
-       :password => ENV["gmail_password"],
-       :authentication => :plain,
-       :enable_starttls_auto => true
-  }
+  config.action_mailer.raise_delivery_errors = true
+  # Send email in development mode.
+  config.action_mailer.perform_deliveries = true
 
   # USE AWS FOR PAPERCLIP
   # config.paperclip_defaults = {

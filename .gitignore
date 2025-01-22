@@ -29,3 +29,5 @@
 # Ignore all environment files (except templates).
 /.env*
 !/.env*.erb
+
+/config/master.key

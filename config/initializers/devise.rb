@@ -12,10 +12,10 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'Ben <no-reply@artigo.nyc>'
+  # config.mailer_sender = 'deinon.daemon@gmail.com' # 'Ben <no-reply@artigo.nyc>'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'ApplicationMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -111,10 +111,10 @@ Devise.setup do |config|
   # config.pepper = 'fadaaffebc24960e4ffb6c9eb03eb9e16ec83763faa81ef86ce96c6de6e5e400b129943a70161e09c138ef6f6d91191b82ef860b3f89bfa5e9e7c2566d1d3356'
 
   # Send a notification to the original email when the user's email is changed.
-  # config.send_email_changed_notification = false
+  config.send_email_changed_notification = false
 
   # Send a notification email when the user's password is changed.
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = false
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

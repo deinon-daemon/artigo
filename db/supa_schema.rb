@@ -11,7 +11,40 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 0) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_schema "auth"
+  create_schema "cron"
+  create_schema "extensions"
+  create_schema "graphql"
+  create_schema "graphql_public"
+  create_schema "pgbouncer"
+  create_schema "pgmq"
+  create_schema "pgsodium"
+  create_schema "pgsodium_masks"
+  create_schema "realtime"
+  create_schema "storage"
+  create_schema "vault"
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_cron"
+  enable_extension "pg_graphql"
+  enable_extension "pg_stat_statements"
+  enable_extension "pgcrypto"
+  enable_extension "pgjwt"
+  enable_extension "pgmq"
+  enable_extension "pgsodium"
+  enable_extension "plpgsql"
+  enable_extension "supabase_vault"
+  enable_extension "uuid-ossp"
+  enable_extension "vector"
+
+  create_table "users", primary_key: ["id", "uid"], force: :cascade do |t|
+    t.bigint "id", null: false
+    t.timestamptz "created_at", default: -> { "now()" }, null: false
+    t.text "name"
+    t.bigint "user_type_id"
+    t.bigint "auth_type_id"
+    t.uuid "uid", default: -> { "gen_random_uuid()" }, null: false
+
+    t.unique_constraint ["uid"], name: "users_uid_key"
+  end
 end

@@ -27,7 +27,7 @@ development:
     <<: *default
     database: supa_development
     database_tasks: true
-    url: <%= ENV["DATABASE_URL"] %>
+    url: <%= ENV["SUPABASE_DATABASE_URL"] %>
     migrations_paths: db/migrate/supa
 
   # The specified database role being used to connect to PostgreSQL.
@@ -94,9 +94,9 @@ production:
   primary:
     <<: *default
     database: artigo_production
-    username: artigo
+    # username: artigo
   supa:
     adapter: postgresql
     encoding: unicode
-    url: <%= ENV["DATABASE_URL"] %>
+    url: <%= ENV["SUPABASE_DATABASE_URL"] %>
     database_tasks: false

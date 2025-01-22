@@ -18,9 +18,12 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'sendgrid-ruby', '5.0.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
