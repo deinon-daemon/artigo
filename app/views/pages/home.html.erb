@@ -1,88 +1,349 @@
+
 <div class="row">
     <div class="col-md-7 banner">
-        <h1><span class="text-red">Artigo</span> find unique art venues and experience new york like a local.</h1>
-    </div>
-</div>
-<%= form_tag search_path, method: :get do %>
-    <div class="row">
-        <div class="col-md-6">
-            <%= text_field_tag :search, params[:search], placeholder: "Where are you going?", class: "form-control", id:"autolocation"%>
-        </div>
-        <div class="col-md-3">
-            <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control datepicker"%>
-        </div>
-        <div class="col-md-3">
-            <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control datepicker"%>
-        </div>
-    </div>
-
-    <br/><br/>
-
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <%= submit_tag "Search", class: "btn btn-normal btn-block"%>
-        </div>
-    </div>
-
-<% end %>
-<br /><hr /><br />
-
-<!-- HOMES -->
-<div><h3>Homes</h3></div>
-<br />
-
-<div class="row">
-    <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms}  %>
-</div>
-
-<!-- CITIES -->
-<div><h3>Cities</h3></div>
-<br />
-
-<div class="row">
-    <div class="col-md-3 col-sm-12">
-        <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=los+angeles">
-            <div class="discovery-card" style="background-image: url('assets/LA.jpg')"></div>
-        </a>
-    </div>
-    <div class="col-md-3 col-sm-12">
-        <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=london">
-            <div class="discovery-card" style="background-image: url('assets/LD.jpg')"></div>
-        </a>
-    </div>
-    <div class="col-md-3 col-sm-12">
-        <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=paris">
-            <div class="discovery-card" style="background-image: url('assets/PR.jpg')"></div>
-        </a>
-    </div>
-    <div class="col-md-3 col-sm-12">
-        <a href="http://localhost:3000/search?utf8=%E2%9C%93&search=miami">
-            <div class="discovery-card" style="background-image: url('assets/MI.jpg')"></div>
-        </a>
+        <!-- <h1><span class="text-red">Artigo</span></h1> -->
+        <h1 id="carousel">
+            <div class="content-slider">
+            <div class="slider">
+                <div class="mask">
+                    <ul>
+                    <li class="anim1">
+                        <div class="wave-container">
+                            <h1 class="wave-text">
+                                <div class="quote"><span class="text-red">Discover</span> <span>Art<br></span></div>
+                            </h1>
+                        </div>
+                    </li>
+                    <li class="anim2">
+                        <div class="wave-container">
+                            <h1 class="wave-text">
+                                <div class="quote"><span class="text-red">Discover</span> <span>Artists<br></span></div>
+                            </h1>
+                        </div>
+                    </li>
+                    <!-- <li class="anim3">
+                        <div class="wave-container">
+                            <h1 class="wave-text">
+                                <div class="quote"><span class="text-red">Discover</span> <span>a</span> <span class="text-red">new</span> <span>New </span><span> York<br></span></span></div>
+                            </h1>
+                        </div>
+                    </li> -->
+                    <li class="anim3">
+                        <div class="quote">
+                            <div class="wave-container">
+                                <h1 class="wave-text">
+                                    <span class="text-red">Discover</span>
+                                    <span>A</span><span>r</span><span>t</span><span>i</span><span>g</span><span>o</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            </div>
+        </h1>
     </div>
 </div>
 
-<script>
-    $('#start_date').datepicker({
-        dateFormat: 'dd-mm-yy',
-        minDate: 0,
-        maxDate: '3m',
-        onSelect: function(selected) {
-            $('#end_date').datepicker("option", "minDate", selected);
-            $('#end_date').attr("disabled", false);
+
+
+<style>
+
+    body {
+        background-image: url('/assets/gallery.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh; /* This ensures the background covers the full viewport height */
+    }
+
+    h1 {
+    font-size: 60px;
+    text-align: center;
+    }
+
+    .content-slider {
+    width: 100%;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .slider {
+    height: 320px;
+    width: 680px;
+    margin: 40px auto 0;
+    overflow: visible;
+    position: relative;
+    }
+
+    .mask {
+    overflow: hidden;
+    height: 320px;
+    }
+
+    .slider ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    }
+
+    .slider li {
+    width: 680px;
+    height: 320px;
+    position: absolute;
+    top: -325px;
+    list-style: none;
+    }
+
+    .slider .quote {
+    font-size: 40px;
+    }
+
+    .slider .source {
+    font-size: 20px;
+    text-align: right;
+    }
+
+    .slider li.anim1 {
+    animation: cycle 15s linear infinite;
+    }
+
+    .slider li.anim2 {
+    animation: cycle2 15s linear infinite;
+    }
+
+    .slider li.anim3 {
+    animation: cycle3 15s linear infinite;
+    }
+
+    /* .slider li.anim4 {
+    animation: cycle4 15s linear infinite;
+    }
+
+    .slider li.anim5 {
+    animation: cycle5 15s linear infinite;
+    } */
+
+    /* .slider:hover li {
+    animation-play-state: paused;
+    } */
+
+    @keyframes cycle {
+    0% {
+        top: 0px;
+    }
+    4% {
+        top: 0px;
+    }
+    16% {
+        top: 0px;
+        opacity: 1;
+        z-index: 0;
+    }
+    20% {
+        top: 325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    21% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    50% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    92% {
+        top: -325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    96% {
+        top: -325px;
+        opacity: 0;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+    }
+
+    @keyframes cycle2 {
+    0% {
+        top: -325px;
+        opacity: 0;
+    }
+    16% {
+        top: -325px;
+        opacity: 0;
+    }
+    20% {
+        top: 0px;
+        opacity: 1;
+    }
+    24% {
+        top: 0px;
+        opacity: 1;
+    }
+    36% {
+        top: 0px;
+        opacity: 1;
+        z-index: 0;
+    }
+    40% {
+        top: 325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    41% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    }
+
+    @keyframes cycle3 {
+    0% {
+        top: -325px;
+        opacity: 0;
+    }
+    36% {
+        top: -325px;
+        opacity: 0;
+    }
+    40% {
+        top: 0px;
+        opacity: 1;
+    }
+    44% {
+        top: 0px;
+        opacity: 1;
+    }
+    56% {
+        top: 0px;
+        opacity: 1;
+        z-index: 0;
+    }
+    60% {
+        top: 325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    61% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    }
+
+    @keyframes cycle4 {
+    0% {
+        top: -325px;
+        opacity: 0;
+    }
+    56% {
+        top: -325px;
+        opacity: 0;
+    }
+    60% {
+        top: 0px;
+        opacity: 1;
+    }
+    64% {
+        top: 0px;
+        opacity: 1;
+    }
+    76% {
+        top: 0px;
+        opacity: 1;
+        z-index: 0;
+    }
+    80% {
+        top: 325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    81% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    100% {
+        top: -325px;
+        opacity: 0;
+        z-index: -1;
+    }
+    }
+
+    @keyframes cycle5 {
+    0% {
+        top: -325px;
+        opacity: 0;
+    }
+    76% {
+        top: -325px;
+        opacity: 0;
+    }
+    80% {
+        top: 0px;
+        opacity: 1;
+    }
+    84% {
+        top: 0px;
+        opacity: 1;
+    }
+    96% {
+        top: 0px;
+        opacity: 1;
+        z-index: 0;
+    }
+    100% {
+        top: 325px;
+        opacity: 0;
+        z-index: 0;
+    }
+    }
+
+    /* wavy boi */
+    .wave-text span {
+        display: inline-block;
+        font-size: 4rem;
+        animation: wave 2s ease-in-out infinite;
+    }
+
+    .wave-text span:nth-child(1) {
+        animation-delay: 0s;
+    }
+    .wave-text span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .wave-text span:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    .wave-text span:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
+    @keyframes wave {
+        0%, 100% {
+            transform: translateY(0);
         }
-    });
-
-    $('#end_date').datepicker({
-        dateFormat: 'dd-mm-yy',
-        minDate: 0,
-        maxDate: '3m',
-        onSelect: function(selected) {
-            $('#start_date').datepicker("option", "maxDate", selected);
+        50% {
+            transform: translateY(-20px);
         }
-    });
-
-    $(function() {
-        $("#autolocation").geocomplete();
-    });
-</script>
+    }
+</style>

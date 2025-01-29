@@ -1,6 +1,3 @@
 TO DOS:
-- SMTP-AUTH Mailer Error -- ArgumentError user name missing
-- Geocoding // Geocompletion map needs to be rebuilt
-- Listings need to get swapped out and restyled // copy rewritten
-- User management interface is great just need to restyle things
-- Remodeling of Listings / etc. in Models, Controllers, and Views
+- Finish Text Carousel Styling
+- Add Listing Flow >> Supabase, Image Upload?

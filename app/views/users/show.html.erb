@@ -13,13 +13,14 @@
                     <% if @user.provider %>
                         <li>Facebook <span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
                     <% end %>
-                    <li>Phone Number <span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+                    <li>Phone Number<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="col-md-9">
         <h2><%= @user.fullname %></h2>
+        <h2><%= @user.user_type %></h2>
 
         <div class="description row-space-3">
             <%= @user.description %>
@@ -31,14 +32,14 @@
         </div>
         <br />
 
-        <h4>Reviews From Guests (<%= @guest_reviews.count %>)</h4>
-        <div class="row">
+        <h4>Reviews From Visitors (<%= @guest_reviews.count %>)</h4>
+        <div class="row" style="padding: 20px;">
             <%= render "reviews/guest_list"%>
         </div>
         <br />
 
-        <h4>Reviews From Hosts (<%= @host_reviews.count %>)</h4>
-        <div class="row">
+        <h4>Reviews From Artists (<%= @host_reviews.count %>)</h4>
+        <div class="row" style="padding: 20px;">
             <%= render "reviews/host_list"%>
         </div>
         <br />

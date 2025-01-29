@@ -117,6 +117,8 @@ ActiveRecord::Schema[7.2].define(version: 2017_08_15_235254) do
     t.string "uid"
     t.string "image"
     t.string "phone_number"
+    t.string "address"
+    t.integer "user_type", default: 0
     t.text "description"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
