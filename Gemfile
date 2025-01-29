@@ -12,7 +12,7 @@ gem 'rails', '7.2.2'
 gem 'pg', '~> 1.1'
 gem 'puma'
 gem 'sass-rails'
-gem 'uglifier'
+gem 'terser'
 gem 'coffee-rails'
 
 gem 'jquery-rails'
