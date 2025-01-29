@@ -15,6 +15,10 @@ gem 'sass-rails'
 gem 'terser'
 gem 'coffee-rails'
 gem 'barnes'
+gem "sprockets-rails"
+gem "stackprof"
+gem "stimulus-rails"
+gem "turbo-rails"
 
 gem 'jquery-rails'
 gem 'turbolinks'
