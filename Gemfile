@@ -14,6 +14,7 @@ gem 'puma'
 gem 'sass-rails'
 gem 'terser'
 gem 'coffee-rails'
+gem 'barnes'
 
 gem 'jquery-rails'
 gem 'turbolinks'
